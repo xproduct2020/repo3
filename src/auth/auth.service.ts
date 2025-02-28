@@ -22,10 +22,6 @@ export class AuthService {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    while (true){
-      console.log("hello")
-    }
-
     const user = await this.usersRepository.create({
       name,
       email,
@@ -42,7 +38,7 @@ export class AuthService {
   async login(loginDto: LoginDto): Promise<{ token: string }> {
     const { email, password } = loginDto;
 
-    const user = await this.usersRepository.findOne({
+    const user = await this.usersRepository.find({
       where: { email },
     });
 
