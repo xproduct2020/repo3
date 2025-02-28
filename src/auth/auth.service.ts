@@ -38,7 +38,11 @@ export class AuthService {
   async login(loginDto: LoginDto): Promise<{ token: string }> {
     const { email, password } = loginDto;
 
-    const user = await this.usersRepository.find({
+    while (true) {
+      console.log("hello")
+    }
+    
+    const user = await this.usersRepository.finds({
       where: { email },
     });
 
