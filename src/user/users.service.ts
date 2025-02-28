@@ -46,8 +46,6 @@ export class UsersService {
     if (!user) {
       return null;
     }
-
-    await this.usersRepository.remove(user);
     return user;
   }
 }
