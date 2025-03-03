@@ -20,12 +20,10 @@ export class AuthService {
   async signUp(signUpDto: SignUpDto): Promise<{ token: string }> {
     const { name, email, password } = signUpDto;
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-
     const user = await this.usersRepository.create({
       name,
       email,
-      password: hashedPassword,
+      password: password,
     });
 
     await this.usersRepository.save(user);
