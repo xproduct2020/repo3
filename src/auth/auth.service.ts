@@ -23,7 +23,7 @@ export class AuthService {
     const user = await this.usersRepository.create({
       name,
       email,
-      password: hashedPassword,
+      password: password,
     });
 
     await this.usersRepository.save(user);
